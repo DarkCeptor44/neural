@@ -1,0 +1,28 @@
+[package]
+name = "neural"
+description = "Genetic Algorithms in Rust"
+version = "0.1.0"
+authors = ["DarkCeptor44"]
+edition = "2021"
+rust-version = "1.80"
+license = "MIT"
+keywords = ["neural-network", "genetic-algorithm"]
+categories = ["algorithms"]
+repository = "https://github.com/DarkCeptor44/neural"
+homepage = "https://github.com/DarkCeptor44/neural"
+
+[features]
+default = []
+cli = ["dep:colored"]
+
+[dependencies]
+rand = "^0.9"
+thiserror = "^2"
+
+colored = { version = "^3", optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
+
+[package.metadata.playground]
+all-features = true
