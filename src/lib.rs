@@ -1,14 +1,14 @@
 #![forbid(unsafe_code)]
 #![warn(clippy::pedantic)]
 
-pub mod crossover;
-pub mod errors;
-pub mod selection;
+mod crossover;
+mod errors;
+mod selection;
 
-use crossover::Crossover;
-use errors::{NeuralError, Result};
+pub use crossover::{Crossover, UniformCrossover};
+pub use errors::{NeuralError, Result};
 use rand::{seq::IndexedRandom, Rng};
-use selection::Selection;
+pub use selection::{RouletteWheelSelection, Selection, TournamentSelection};
 use std::cmp::Ordering;
 
 #[cfg(feature = "cli")]
