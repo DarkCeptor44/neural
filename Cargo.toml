@@ -9,7 +9,7 @@ license = "MIT"
 keywords = ["neural-network", "genetic-algorithm"]
 categories = ["algorithms"]
 repository = "https://github.com/DarkCeptor44/neural"
-homepage = "https://github.com/DarkCeptor44/neural"
+homepage = "https://docs.rs/neural"
 
 [features]
 default = []
