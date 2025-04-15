@@ -2,7 +2,7 @@ use thiserror::Error;
 
 pub type Result<T> = std::result::Result<T, NeuralError>;
 
-/// Errors for neural
+/// Errors for Neural
 #[derive(Debug, Error)]
 pub enum NeuralError {
     /// The population size is 0

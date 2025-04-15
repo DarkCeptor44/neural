@@ -433,11 +433,6 @@ where
 
 #[cfg(test)]
 mod tests {
-    use crate::{
-        crossover::UniformCrossover,
-        selection::{RouletteWheelSelection, TournamentSelection},
-    };
-
     use super::*;
     use rand::rngs::ThreadRng;
 

@@ -1,6 +1,6 @@
-# neural
+# Neural
 
-**Neural** (name could change) is a library for Genetic Algorithms in Rust.
+**Neural** is a library for Genetic Algorithms in Rust.
 
 ## Concepts
 
@@ -13,7 +13,7 @@
 
 ## Features
 
-- **cli** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation.
+- **cli** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation and enables colored output.
 
 ## Getting Started
 
@@ -28,19 +28,17 @@ Or add it as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-neural = "^0.1"
+neural = "^0.2"
 
 # or add it with the cli feature
 [dependencies]
-neural = { version = "^0.1", features = ["cli"] }
+neural = { version = "^0.2", features = ["cli"] }
 ```
 
 ## Usage
 
 ```rust
-use neural::{
-    errors::Result, Gene, Population, PopulationBuilder, selection::TournamentSelection, crossover::UniformCrossover,
-};
+use neural::{Gene, Population, PopulationBuilder, Result, TournamentSelection, UniformCrossover};
 use rand::{rngs::ThreadRng, Rng};
 use std::fmt::Display;
 
