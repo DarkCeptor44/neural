@@ -240,6 +240,14 @@ where
 
         let elitism_offset = usize::from(self.elitism);
         for _gen in 0..generations {
+            if self.population.is_empty() {
+                #[cfg(feature = "cli")]
+                if self.print {
+                    println!("Population collapsed at generation {_gen}");
+                }
+                return None;
+            }
+
             let mut next_gen = Vec::with_capacity(self.pop_size);
 
             if self.elitism {
