@@ -28,11 +28,11 @@
 //!
 //! ```toml
 //! [dependencies]
-//! neural = "^0.2"
+//! neural = "^0.3"
 //!
 //! # or add it with the print feature
 //! [dependencies]
-//! neural = { version = "^0.2", features = ["print"] }
+//! neural = { version = "^0.3", features = ["print"] }
 //! ```
 //!
 //! ## Usage
