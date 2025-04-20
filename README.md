@@ -13,15 +13,15 @@
 
 ## Features
 
-- **cli** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation and enables colored output.
+- **print** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation and enables colored output.
 
 ## Getting Started
 
 ```sh
 cargo add neural
 
-# or add it with the cli feature
-cargo add neural --features cli
+# or add it with the print feature
+cargo add neural --features print
 ```
 
 Or add it as a dependency in your `Cargo.toml`:
@@ -30,9 +30,9 @@ Or add it as a dependency in your `Cargo.toml`:
 [dependencies]
 neural = "^0.2"
 
-# or add it with the cli feature
+# or add it with the print feature
 [dependencies]
-neural = { version = "^0.2", features = ["cli"] }
+neural = { version = "^0.2", features = ["print"] }
 ```
 
 ## Usage
@@ -81,7 +81,7 @@ fn main() -> Result<()> {
             .with_population_size(100)
             .with_mutation_rate(0.02)
             .with_elitism(true)
-            // .with_print(true) // uncomment to print the best chromosome after each generation. requires the cli feature
+            // .with_print(true) // uncomment to print the best chromosome after each generation. requires the `print` feature
             .build()?;
 
     let num_generations = 200;

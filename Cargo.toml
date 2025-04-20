@@ -1,7 +1,7 @@
 [package]
 name = "neural"
 description = "Genetic Algorithms in Rust"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["DarkCeptor44"]
 edition = "2021"
 rust-version = "1.80"
@@ -13,7 +13,7 @@ homepage = "https://docs.rs/neural"
 
 [features]
 default = []
-cli = ["dep:colored"]
+print = ["dep:colored"]
 
 [dependencies]
 rand = "^0.9"

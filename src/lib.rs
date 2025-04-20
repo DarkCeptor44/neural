@@ -13,15 +13,15 @@
 //!
 //! ## Features
 //!
-//! - **cli** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation and enables colored output.
+//! - **print** - Allows using the `with_print` method on a `PopulationBuilder` to print the population's best chromosome after each generation and enables colored output.
 //!
 //! ## Getting Started
 //!
 //! ```sh
 //! cargo add neural
 //!
-//! # or add it with the cli feature
-//! cargo add neural --features cli
+//! # or add it with the print feature
+//! cargo add neural --features print
 //! ```
 //!
 //! Or add it as a dependency in your `Cargo.toml`:
@@ -30,9 +30,9 @@
 //! [dependencies]
 //! neural = "^0.2"
 //!
-//! # or add it with the cli feature
+//! # or add it with the print feature
 //! [dependencies]
-//! neural = { version = "^0.2", features = ["cli"] }
+//! neural = { version = "^0.2", features = ["print"] }
 //! ```
 //!
 //! ## Usage
@@ -81,7 +81,7 @@
 //!             .with_population_size(100)
 //!             .with_mutation_rate(0.02)
 //!             .with_elitism(true)
-//!             // .with_print(true) // uncomment to print the best chromosome after each generation. requires the cli feature
+//!             // .with_print(true) // uncomment to print the best chromosome after each generation. requires the print feature
 //!             .build()?;
 //!
 //!     let num_generations = 200;
@@ -113,7 +113,7 @@ use rand::{seq::IndexedRandom, Rng};
 pub use selection::{RouletteWheelSelection, Selection, TournamentSelection};
 use std::cmp::Ordering;
 
-#[cfg(feature = "cli")]
+#[cfg(feature = "print")]
 use colored::Colorize;
 
 /// Trait for generating a random Gene
@@ -184,7 +184,7 @@ where
     pub elitism: bool,
     pub rng: Box<R>,
 
-    #[cfg(feature = "cli")]
+    #[cfg(feature = "print")]
     pub print: bool,
 }
 
@@ -241,7 +241,7 @@ where
         let elitism_offset = usize::from(self.elitism);
         for _gen in 0..generations {
             if self.population.is_empty() {
-                #[cfg(feature = "cli")]
+                #[cfg(feature = "print")]
                 if self.print {
                     println!("Population collapsed at generation {_gen}");
                 }
@@ -280,7 +280,7 @@ where
             self.mutate();
             self.evaluate();
 
-            #[cfg(feature = "cli")]
+            #[cfg(feature = "print")]
             if self.print {
                 if let Some(best) = self.best() {
                     println!(
@@ -357,7 +357,7 @@ pub struct PopulationBuilder<G, S, C, F, R> {
     elitism: bool,
     rng: R,
 
-    #[cfg(feature = "cli")]
+    #[cfg(feature = "print")]
     print: bool,
 }
 
@@ -392,7 +392,7 @@ where
             elitism: false,
             rng: R::default(),
 
-            #[cfg(feature = "cli")]
+            #[cfg(feature = "print")]
             print: false,
         }
     }
@@ -447,7 +447,7 @@ where
     ///
     /// * `print` - The print flag
     #[must_use]
-    #[cfg(feature = "cli")]
+    #[cfg(feature = "print")]
     pub fn with_print(mut self, print: bool) -> Self {
         self.print = print;
         self
@@ -505,7 +505,7 @@ where
             elitism: self.elitism,
             rng: Box::new(self.rng),
 
-            #[cfg(feature = "cli")]
+            #[cfg(feature = "print")]
             print: self.print,
         };
 
