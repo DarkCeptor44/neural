@@ -101,7 +101,7 @@
 //! ```
 
 #![forbid(unsafe_code)]
-#![warn(clippy::pedantic)]
+#![warn(clippy::pedantic, missing_debug_implementations)]
 
 mod crossover;
 mod errors;
@@ -337,6 +337,7 @@ where
 }
 
 /// Builder for a [Population]
+#[derive(Debug)]
 pub struct PopulationBuilder<G, S, C, F, R> {
     chromo_size: usize,
     pop_size: usize,
