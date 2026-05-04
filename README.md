@@ -28,11 +28,11 @@ Or add it as a dependency in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-neural = "^0.3"
+neural = "0.4.0"
 
 # or add it with the print feature
 [dependencies]
-neural = { version = "^0.3", features = ["print"] }
+neural = { version = "0.4.0", features = ["print"] }
 ```
 
 ## Usage
