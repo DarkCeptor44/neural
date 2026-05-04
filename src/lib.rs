@@ -76,7 +76,7 @@
 //!
 //! fn main() -> Result<()> {
 //!     let mut pop: Population<F64, TournamentSelection, UniformCrossover, _, ThreadRng> =
-//!         PopulationBuilder::new(None, |c| c.value.iter().map(|g: &F64| g.0).sum::<f64>())
+//!         PopulationBuilder::new(None, |c, _| c.value.iter().map(|g: &F64| g.0).sum::<f64>())
 //!             .with_chromo_size(50)
 //!             .with_population_size(100)
 //!             .with_mutation_rate(0.02)
@@ -193,7 +193,7 @@ where
     G: Gene,
     S: Selection<G>,
     C: Crossover<G>,
-    F: FnMut(&Chromosome<G>) -> f64,
+    F: FnMut(&Chromosome<G>, &[Chromosome<G>]) -> f64,
     R: Rng + ?Sized,
 {
     /// Returns the best [Chromosome], the chromosome with the highest fitness
@@ -217,8 +217,9 @@ where
 
     /// Evaluates the chromosomes in the population
     pub fn evaluate(&mut self) {
+        let pop = self.population.clone();
         self.population.iter_mut().for_each(|c| {
-            c.fitness = (self.eval_fn)(c);
+            c.fitness = (self.eval_fn)(c, &pop);
         });
     }
 
@@ -366,7 +367,7 @@ where
     G: Gene,
     S: Selection<G>,
     C: Crossover<G>,
-    F: FnMut(&Chromosome<G>) -> f64,
+    F: FnMut(&Chromosome<G>, &[Chromosome<G>]) -> f64,
     R: Rng + Default,
 {
     /// Creates a new [`PopulationBuilder`]
@@ -571,7 +572,7 @@ mod tests {
                 }
 
                 let mut pop: Population<F64, $selection, $crossover, _, ThreadRng> =
-                    PopulationBuilder::new(None, |c| {
+                    PopulationBuilder::new(None, |c, _| {
                         c.value.iter().map(|g: &F64| g.0).sum::<f64>()
                     })
                     .with_chromo_size(50)
@@ -612,7 +613,7 @@ mod tests {
 
         PopulationBuilder::<i32, TournamentSelection, UniformCrossover, _, ThreadRng>::new(
             None,
-            |c| f64::from(c.value.iter().sum::<i32>()),
+            |c, _| f64::from(c.value.iter().sum::<i32>()),
         )
         .with_population_size(0)
         .build()
