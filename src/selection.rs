@@ -1,5 +1,5 @@
 use crate::Chromosome;
-use rand::{seq::IndexedRandom, Rng};
+use rand::{Rng, RngExt, seq::IndexedRandom};
 
 /// Trait for selecting a subset of the population
 pub trait Selection<G>: Default {

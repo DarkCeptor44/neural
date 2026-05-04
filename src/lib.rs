@@ -39,7 +39,7 @@
 //!
 //! ```rust
 //! use neural::{Gene, Population, PopulationBuilder, Result, TournamentSelection, UniformCrossover};
-//! use rand::{rngs::ThreadRng, Rng};
+//! use rand::{rngs::ThreadRng, Rng, RngExt};
 //! use std::fmt::Display;
 //!
 //! #[derive(Debug, Clone, PartialEq, PartialOrd)]
@@ -109,7 +109,7 @@ mod selection;
 
 pub use crossover::{Crossover, UniformCrossover};
 pub use errors::{NeuralError, Result};
-use rand::{seq::IndexedRandom, Rng};
+use rand::{Rng, RngExt, seq::IndexedRandom};
 pub use selection::{RouletteWheelSelection, Selection, TournamentSelection};
 use std::cmp::Ordering;
 

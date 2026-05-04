@@ -1,5 +1,5 @@
 use crate::Chromosome;
-use rand::Rng;
+use rand::{Rng, RngExt};
 
 /// Trait for crossing over two chromosomes
 pub trait Crossover<G>: Default {
