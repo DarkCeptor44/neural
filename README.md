@@ -100,6 +100,13 @@ fn main() -> Result<()> {
 }
 ```
 
+## MSRV
+
+| Version | Edition | MSRV |
+| --- | --- | --- |
+| v0.4.0 | 2024 | 1.85 |
+| v0.1.0 - v0.3.0 | 2021 | 1.80 |
+
 ## License
 
 This library is distributed under the terms of the [MIT License](LICENSE).
